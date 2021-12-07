@@ -25,7 +25,6 @@ function jump() {
     console.log(counter);
 }
 
-
 document.addEventListener("keyup", function(evt) {
     switch (evt.key) {
         // case "ArrowRight":
@@ -45,33 +44,39 @@ document.addEventListener("keyup", function(evt) {
     }
 })
 
-var id = null;
+// let id = null;
 
 function myMove() {
-    var elem = document.getElementById("hole");
-    var pos = 1100;
-    clearInterval(id);
-    id = setInterval(frame, 15);
+    let elem = document.getElementById("hole" + holeNum);
+    let test = elem.id
+     let pos = 1100;
+    clearInterval(test);
+    test = setInterval(frame, 15);
 
     function frame() {
         if (pos == -50) {
-            clearInterval(id);
-            myMove();
+            clearInterval(test);
+            // myMove();
         } else {
             pos--;
             elem.style.left = pos + 'px';
         }
     }
 }
-
-
-
+let holeNum = 0;
 function holeCreater() {
     let holeDiv = document.createElement("div")
-    holeDiv.setAttribute("id", "hole")
-
+    holeDiv.setAttribute("id", "hole" + holeNum)
+    holeDiv.setAttribute("class", "hole")
     game.append(holeDiv)
 }
-holeCreater();
 
-myMove();
+function yourFunction(){
+    // do whatever you like here
+    holeCreater()
+    myMove()
+    setTimeout(yourFunction, 3200);
+    holeNum++
+}
+
+yourFunction();
