@@ -64,4 +64,14 @@ function myMove() {
     }
 }
 
+
+
+function holeCreater() {
+    let holeDiv = document.createElement("div")
+    holeDiv.setAttribute("id", "hole")
+
+    game.append(holeDiv)
+}
+holeCreater();
+
 myMove();
