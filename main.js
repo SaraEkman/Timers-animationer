@@ -67,6 +67,8 @@ function myMove() {
                 location.reload()
 
                 //skriv ut highscore på skärmen
+
+                //NY PUSH NU MED DENNA
                 
             }
             
