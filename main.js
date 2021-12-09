@@ -9,14 +9,14 @@ let points = 0;
 
 
 function jump() {
-    let timer = setInterval(function () {
+    let timer = setInterval(function() {
         counter++;
         bottom += 10;
 
         if (counter == 15) {
             clearInterval(timer);
 
-            let timerdown = setInterval(function () {
+            let timerdown = setInterval(function() {
                 if (bottom == 210) { clearInterval(timerdown); }
                 bottom -= 10;
                 hero.style.bottom = bottom + "px";
@@ -27,12 +27,15 @@ function jump() {
 
     }, 30);
     counter = 0;
-    
+
+
 }
 
-document.addEventListener("keyup", function (evt) {
-    
+document.addEventListener("keyup", function(evt) {
+
     if (evt.key === "ArrowUp" && bottom == 200) {
+        hero.style.width = 60 + "px";
+        hero.style.backgroundImage = "url('heroJump.png')";
         jump();
     }
 
@@ -51,17 +54,17 @@ function myMove() {
         if (pos == -50) {
             clearInterval(test);
             elem.remove();
-            points ++;
+            points++;
             console.log(points);
-            pointsDiv.innerText = "Score: " +points+ " !";
-            
+            pointsDiv.innerText = "Score: " + points + " !";
+
 
         } else {
             pos--;
             elem.style.left = pos + 'px';
             if (pos <= 70 && bottom <= 200) {
-                
-                
+
+
                 // hämta localstorage först, om points är högre än localstoarage så skriv över
                 localStorage.setItem("highScore", points);
                 location.reload()
@@ -69,9 +72,9 @@ function myMove() {
                 //skriv ut highscore på skärmen
 
                 //NY PUSH NU MED DENNA
-                
+
             }
-            
+
         }
     }
 }
@@ -79,18 +82,19 @@ function myMove() {
 
 
 let holeNum = 0;
+
 function holeCreater() {
 
     let holeDiv = document.createElement("div");
     holeDiv.setAttribute("id", "hole" + holeNum);
     holeDiv.setAttribute("class", "hole");
-    
+
     game.append(holeDiv);
 
 }
 
 function yourFunction() {
-    
+
     // do whatever you like here
     holeCreater();
     myMove();
@@ -101,9 +105,13 @@ function yourFunction() {
 
 function start() {
     let btn = document.createElement("button")
-    btn.innerText = "Starta"
+    btn.innerText = "START"
     document.body.append(btn)
-    btn.style.padding = "8px"
+    btn.style.padding = "15px"
+    btn.style.margin = "20px"
+    btn.style.borderRadius = "10px"
+    btn.style.fontSize = "1.5rem"
+    btn.style.background = "lightgreen"
 
     btn.addEventListener("click", () => {
         yourFunction();
@@ -123,4 +131,3 @@ start()
 // if ((hero.style.bottom === 200) && (holeDivTest.style.left === left)) {
 //     console.log("Här");
 // }
-
