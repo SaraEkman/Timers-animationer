@@ -20,6 +20,7 @@ function jump() {
                 if (bottom == 210) { clearInterval(timerdown); }
                 bottom -= 10;
                 hero.style.bottom = bottom + "px";
+                hero.style.backgroundImage = "url('hero.png')";
             }, 30);
         };
 
